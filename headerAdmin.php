@@ -33,6 +33,7 @@
 <div class="col s6">	
 	<div class="nav-kiri">
 		<div id="des"><a href="Deshbord.php"><img src="img/icon/home.png">Dashboard</a></div>
+		<div id="des"><a href="register.php">Register Admin</a></div>
 		<div id="des"><a href="inputBerita.php"><img src="img/icon/form.png">Input Berita</a></div>
 		<div id="des"><a href="berita.php"><img src="img/icon/tabel.png">Berita</a></div>
 		<div id="des"><a href="about.php"><img src="img/icon/about.png">About</a></div>
