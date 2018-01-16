@@ -1,7 +1,19 @@
 <?php 
 require_once 'core/init.php';
 
-$berit = $berita->tmp();
+$super_user = false;
+if (!isset($_SESSION['user'])) {
+	header("Location:index.php");
+
+}else{
+	if (cek_status($_SESSION['user']) == 1) {
+		$super_user = true;
+	}
+
+
+
+$berita = tampilkan();
+
 require_once 'headerAdmin.php'; ?>
 <div class="nav-kanan">
 	
@@ -9,8 +21,9 @@ require_once 'headerAdmin.php'; ?>
 <div class="container">
 	<h3 class="center">Berita</h3>
 	<div class="row">
-	<?php while ( $row = mysqli_fetch_assoc($berit)) : ?>
-		
+	
+	<?php while($row = mysqli_fetch_assoc($berita)): ?>
+
 	<div class="row materis-Card">
 		<div class="col s12 m4">
 			<div class="card ">
@@ -20,13 +33,18 @@ require_once 'headerAdmin.php'; ?>
 				<div class="card-content">
 					<span class="card-title"><?php echo $row['judul'] ?><i class="activator material-icons right">more_vert</i></span>
 				</div>
+
+		 	<?php if ($super_user == true) :?>
+				 <div class="card-action">
+	              <a href="edit.php?id=<?= $row['id'] ?>">Edit</a>
+	              <a href="hapus.php?id=<?= $row['id'] ?>">Hapus</a>
+	            </div>
+			<?php endif;?>
 		 		<div class="card-reveal">
 					<div class="card-title">
-						<?php echo $row['isi']; ?><i class="material-icons right">close</i>
+						<?php echo $row['judul']; ?><i class="material-icons right">close</i>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+					<p><?php echo exceprt($row['isi']); ?></p>
 					<a href="#!" class="btn waves-effect waves-light">Lihat</a>
 				</div>
 			</div>
@@ -38,13 +56,11 @@ require_once 'headerAdmin.php'; ?>
 </div>
 </div>
 </section>
-<div class="center">
-	<div class="lainya">
-		<button class="btn waves-effect">Lainya</button>
-	</div>
-</div>
 
 </div>
 </div>
 
-	<?php require_once 'footer.php'; ?>
+<?php require_once 'footer.php';
+}
+ ?>
+	

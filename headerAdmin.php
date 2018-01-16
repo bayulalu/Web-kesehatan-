@@ -1,3 +1,11 @@
+<?php require_once 'core/init.php';
+	$super_user = false;
+
+	if (cek_status($_SESSION['user']) == 1) {
+		$super_user = true;
+	}
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +13,8 @@
 </head>
 <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
  <link rel="shortcut icon" href="img/log.png">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
  <link rel="stylesheet" type="text/css" href="asset/costem/costum.css">
 <link rel="stylesheet" type="text/css" href="asset/css/materialize.min.css"><script src="asset/JQuerry/JQuery.js"></script>
 <script src="asset/JQuerry/JQuery.js"></script>
@@ -33,15 +43,18 @@
 <div class="col s6">	
 	<div class="nav-kiri">
 		<div id="des"><a href="Deshbord.php"><img src="img/icon/home.png">Dashboard</a></div>
+
+		<?php if ($super_user == true) :
+			
+		 ?>
 		<div id="des"><a href="register.php">Register Admin</a></div>
+		<?php endif; ?>
+
 		<div id="des"><a href="inputBerita.php"><img src="img/icon/form.png">Input Berita</a></div>
 		<div id="des"><a href="berita.php"><img src="img/icon/tabel.png">Berita</a></div>
 		<div id="des"><a href="about.php"><img src="img/icon/about.png">About</a></div>
-		<div id="des"><a href="index.html"><img src="img/icon/logout.png">Logout</a></div>
+		<div id="des"><a href="logout.php"><img src="img/icon/logout.png">Logout</a></div>
 
 	</div>
 </div>
 
-	
-</body>
-</html>

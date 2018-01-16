@@ -4,22 +4,30 @@ if (!isset($_SESSION['user'])) {
 	header("Location:index.php");
 }else{
 
-
 $erorr ='';
-if (isset($_POST["btn"])) {
-	$judul = $_POST["judul"];
-	$konten = $_POST["konten"];
+$id = $_GET['id'];
 
+
+if (isset($_GET['id'])) {
+	$berita = tampilkan_per_id($id);
+
+	while ($row = mysqli_fetch_assoc($berita)) {
+		$judul_awal = $row['judul'];
+		$konten_awal = $row['isi'];
+	}
+}
+
+if (isset($_POST['btn'])) {
+	$judul = $_POST['judul'];
+	$konten = $_POST['konten'];
 	if (!empty(trim($judul)) && !empty(trim($konten))) {
-		if (tambah_data($judul,$konten)) {
-			 echo "<script language='JavaScript'>alert('Input Data Berhasil');
-	               document.location = 'Deshbord.php';
+		if (edit_data($judul,$konten,$id)) {
+			echo "<script language='JavaScript'>alert('Edit Data Berhasil');
+	               document.location = 'berita.php';
 	          </script>";
-		}else{
-			$erorr = 'ada masalah saat menambah data';
 		}
 	}else{
-			$erorr = 'data tidak boleh kosong';
+		echo "data tidk boleh kosong";
 	}
 }
 
@@ -34,31 +42,26 @@ require_once 'headerAdmin.php';
 				<!-- isi -->
 				<h3>Input Berita</h3>
 				<div class="row">
-				<form class="col s12" method="post" action="inputBerita.php">
+				<form class="col s12" method="post" action="">
 					<div class="row">
 						<div class="input-field col s12">
 						<!-- icon -->
 						
 							<label >Judul</label>
-							<input type="text" name="judul" required>
+							<input type="text" name="judul" required value="<?= $judul_awal ?>">
 						</div>
 				
 						<!-- <label>Isi</label> -->
 						<div class="input-field  col s12">
 							<!-- <i class="material-icons prefix">vpn_key</i> -->
-							<textarea name="konten" rows="240" cols="80" id="tinytextarea"></textarea>
-							
-							<!-- <label for="isi">Isi Berita</label> -->
+							<textarea name="konten" rows="240" cols="80" id="tinytextarea"><?=$konten_awal ?></textarea>
+						
 						</div>
 						
 					</div>
 					
 					<input type="submit" name="btn" class="btn ">
-				<!-- 	<div class="input-field col s12">
-					<p>
-						<?php //echo $erorr; ?>
-					</p>
-				</div> -->
+				
 					
 					</form>
 					<br><br>

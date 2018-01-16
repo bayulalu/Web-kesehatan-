@@ -1,4 +1,14 @@
-<?php require_once 'headerAdmin.php'; ?>
+<?php 
+require_once 'core/init.php';
+if (!isset($_SESSION['user'])) {
+	header("Location:index.php");
+}else{
+
+
+require_once 'headerAdmin.php'; 
+
+
+?>
 <div class="nav-kanan">
 	<div class="conteiner">
 		<div class="row">
@@ -21,4 +31,6 @@
 </div>
 
 
-<?php require_once 'footer.php'; ?>
+<?php require_once 'footer.php';
+}
+ ?>

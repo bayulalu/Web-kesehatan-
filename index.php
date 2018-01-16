@@ -1,8 +1,26 @@
+<?php 
+require_once 'core/init.php';
+$berita = tampilkan();
+
+if (isset($_POST["btn"])) {
+	$nama = $_POST['nama'];
+	$pass = $_POST['pass'];
+	if (!empty(trim($nama)) && !empty(trim($pass))) {
+		if (cek_data($nama,$pass)) {
+			$_SESSION['user'] = $nama;
+			header("Location:Deshbord.php");
+		}
+	}else{
+		//echo "kosng";
+	}
+}
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
+<link rel="shortcut icon" href="img/log.png">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="asset/costem/costum.css">
@@ -51,7 +69,7 @@
 		<h4 class="center">Login</h4>
 		<div class="container">
 			<div class="row">
-				<form class="col s12">
+				<form class="col s12" method="post">
 					<div class="row">
 						<div class="input-field col s12">
 							<i class="material-icons prefix">account_circle</i>
@@ -146,7 +164,7 @@
 <div class="container">
 	<h3 class="center">Berita</h3>
 	<div class="row">
-		
+		<?php while($row = mysqli_fetch_assoc($berita)): ?>
 	<div class="row materis-Card">
 		<div class="col s12 m4">
 			<div class="card ">
@@ -154,41 +172,19 @@
 					<img src="gambar/info.jpg" class="activator responsive-img">
 				</div>
 				<div class="card-content">
-					<span class="card-title">Materi pertama <i class="activator material-icons right">more_vert</i></span>
+					<span class="card-title"><?php echo $row['judul'] ?><i class="activator material-icons right">more_vert</i></span>
 				</div>
 		 		<div class="card-reveal">
 					<div class="card-title">
-						Berita Pertama <i class="material-icons right">close</i>
+						<?php echo $row['judul']; ?><i class="material-icons right">close</i>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+					<p><?php echo exceprt($row['isi']); ?></p>
 					<a href="#!" class="btn waves-effect waves-light">Lihat</a>
 				</div>
 			</div>
 		</div>
 
-		<!-- berita 2 -->
-<div class="col s12 m4" >
-			<div class="card ">
-				<div class="card-img waves-effect waves-light">
-					<img src="gambar/info.jpg" class="activator responsive-img">
-				</div>
-				<div class="card-content">
-					<span class="card-title">Materi pertama <i class="activator material-icons right">more_vert</i></span>
-				</div>
-		 		<div class="card-reveal">
-					<div class="card-title">
-						Berita Pertama <i class="material-icons right">close</i>
-					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-					<a href="#!" class="btn waves-effect waves-light">Lihat</a>
-				</div>
-			</div>
-		</div>
-
+<?php endwhile; ?>
 	</div>
 <div>
 </div>
