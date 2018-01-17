@@ -24,6 +24,7 @@ if (isset($_POST["btn"])) {
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="asset/costem/costum.css">
+<link rel="stylesheet" type="text/css" href="asset/costem/animate.css">
 <link rel="stylesheet" type="text/css" href="asset/css/materialize.min.css">
 <script src="asset/JQuerry/JQuery.js"></script>
 <body>
@@ -127,7 +128,7 @@ if (isset($_POST["btn"])) {
 <section id="visi">
 	<br>
 <div class="blue lighten-5">
-<div class="container ">
+<div class="container animated bounceInLeft ">
 	<h3 class="center">Visi Misi</h3>
 	<div class="row">
 		<div class="col m6 s12">
@@ -165,7 +166,7 @@ if (isset($_POST["btn"])) {
 	<h3 class="center">Berita</h3>
 	<div class="row">
 		<?php while($row = mysqli_fetch_assoc($berita)): ?>
-	<div class="row materis-Card">
+	<div class="row materis-Card berita1 animated">
 		<div class="col s12 m4">
 			<div class="card ">
 				<div class="card-img waves-effect waves-light">
@@ -179,7 +180,7 @@ if (isset($_POST["btn"])) {
 						<?php echo $row['judul']; ?><i class="material-icons right">close</i>
 					</div>
 					<p><?php echo exceprt($row['isi']); ?></p>
-					<a href="#!" class="btn waves-effect waves-light">Lihat</a>
+					<a href="singgle.php?id=<?= $row['id'] ?>" class="btn waves-effect waves-light">Lihat</a>
 				</div>
 			</div>
 		</div>
@@ -192,7 +193,7 @@ if (isset($_POST["btn"])) {
 </section>
 <div class="center">
 	<div class="lainya">
-		<button class="btn waves-effect">Lainya</button>
+		<a href="lainya.php" class="btn waves-effect">Lainya</a>
 	</div>
 </div>
 
@@ -206,7 +207,7 @@ if (isset($_POST["btn"])) {
       	<img src="gambar/b.jpg">
       </div>
 	
-	<div class="container">
+	<div class="container  melayani1 animated">
 		<div class="titile center">
 		<h5 id="selamat"><b>SELAMAT DATANG DI PELAYANAN PUBLIC BIDANG KESEHATAN </b></h5>
 			
@@ -238,9 +239,9 @@ if (isset($_POST["btn"])) {
 
 <section id="info">
 	<br><br>
-<div class="container">
-	<div class="row">
 		<h3 class="center">Informasi kegiatan</h3>
+<div class="container gambar1 animated">
+	<div class="row">
 		
 		<div class="col s12 m4 ">
 			<img src="gambar/1.jpeg" class="responsive-img materialboxed">

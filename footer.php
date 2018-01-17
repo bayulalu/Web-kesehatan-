@@ -68,8 +68,23 @@ $(document).on('keydown',function(eventObject){
         
       }
 
-
     });
+
+     $(window).scroll(function(){
+      // $var sc = scrollTop();
+      if ($(window).scrollTop() > 522) {
+       $('.berita1').addClass('bounceInUp');
+      }
+       if ($(window).scrollTop() > 1250) {
+        $('.melayani1').addClass('bounceInLeft');
+      }
+
+      if ($(window).scrollTop() > 1650) {
+         console.log('1');
+        $('.gambar1').addClass('bounceInUp');
+      }
+    });
+
 
 });
 </script>
