@@ -53,12 +53,8 @@ require_once 'headerAdmin.php';
 						
 					</div>
 					
-					<input type="submit" name="btn" class="btn ">
-				<!-- 	<div class="input-field col s12">
-					<p>
-						<?php //echo $erorr; ?>
-					</p>
-				</div> -->
+					<input type="submit" name="btn" class="btn " value="simpan">
+
 					
 					</form>
 					<br><br>

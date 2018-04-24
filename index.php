@@ -165,8 +165,8 @@ if (isset($_POST["btn"])) {
 <div class="container">
 	<h3 class="center">Berita</h3>
 	<div class="row">
-		<?php while($row = mysqli_fetch_assoc($berita)): ?>
 	<div class="row materis-Card berita1 animated">
+		<?php while($row = mysqli_fetch_assoc($berita)): ?>
 		<div class="col s12 m4">
 			<div class="card ">
 				<div class="card-img waves-effect waves-light">

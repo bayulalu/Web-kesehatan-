@@ -16,10 +16,12 @@ if (!isset($_SESSION['user'])) {
 		          </script>";
 				}
 			}else{
-				echo 'nama sudah ada';
+				echo "<script language='JavaScript'>alert('Nama sudah terdaftar');
+		          </script>";
 			}
 		}else{
-			echo 'data tidk boleh kosong';
+			echo "<script language='JavaScript'>alert('Data tidak boleh ada yang kosong');
+		          </script>";
 		}
 	}
 

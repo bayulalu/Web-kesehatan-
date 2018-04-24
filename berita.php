@@ -12,21 +12,38 @@ if (!isset($_SESSION['user'])) {
 
 
 
-$berita = tampilkan();
+$berita = tampilkanAll();
+if (isset($_GET['cari'])) {
+	$cari = $_GET['cari'];
+	$berita = hasil_cari($cari);
+}
+
 
 require_once 'headerAdmin.php'; ?>
 <div class="nav-kanan">
 	
 					
 <div class="container">
+<div class="row"> 
+<div class="col s12">
+		
+<form action="" method="get">
+	<div class="right">
+	<input type="search" name="cari" placeholder="Silahkan Cari Disini .. ">
+	</div>
+</form>
+</div>
+</div>
+
+
 	<h3 class="center">Berita</h3>
 	<div class="row">
 	
-	<?php while($row = mysqli_fetch_assoc($berita)): ?>
 
 	<div class="row materis-Card">
+	<?php while($row = mysqli_fetch_assoc($berita)): ?>
 		<div class="col s12 m4">
-			<div class="card ">
+			<div class="card">
 				<div class="card-img waves-effect waves-light">
 					<img src="gambar/info.jpg" class="activator responsive-img">
 				</div>
@@ -55,7 +72,7 @@ require_once 'headerAdmin.php'; ?>
 <div>
 </div>
 </div>
-</section>
+
 
 </div>
 </div>

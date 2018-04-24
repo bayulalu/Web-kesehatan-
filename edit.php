@@ -40,7 +40,7 @@ require_once 'headerAdmin.php';
 			<div class="kon-des">
 				<div class="container">
 				<!-- isi -->
-				<h3>Input Berita</h3>
+				<h3>Edit Berita</h3>
 				<div class="row">
 				<form class="col s12" method="post" action="">
 					<div class="row">
@@ -60,7 +60,7 @@ require_once 'headerAdmin.php';
 						
 					</div>
 					
-					<input type="submit" name="btn" class="btn ">
+					<input type="submit" name="btn" class="btn " value="edit">
 				
 					
 					</form>

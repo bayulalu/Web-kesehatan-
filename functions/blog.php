@@ -1,11 +1,19 @@
 <?php 
 
-function tampilkan(){
+function tampilkanAll(){
 	
-	$query = "SELECT * FROM berita";
+	$query = "SELECT * FROM berita ORDER BY id DESC";
 
 	return result($query);
 }
+
+function tampilkan(){
+	
+	$query = "SELECT * FROM berita ORDER BY id DESC LIMIT 3";
+
+	return result($query);
+}
+
 function tampilkan_per_id($id){
 	$query = "SELECT * FROM berita WHERE id = $id";
 	
@@ -14,7 +22,7 @@ function tampilkan_per_id($id){
 }
 function hasil_cari($cari){
 
-	$query = "SELECT * FROM berita WHERE nama LIKE '%$cari%' ";
+	$query = "SELECT * FROM berita WHERE judul LIKE '%$cari%' ";
 
 	return result($query);
 }

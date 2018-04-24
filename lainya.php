@@ -1,15 +1,30 @@
 <?php  
 require_once 'core/init.php';
-$berita = tampilkan();
+$berita = tampilkanAll();
+if (isset($_GET['cari'])) {
+	$cari = $_GET['cari'];
+	$berita = hasil_cari($cari);
+}
 
  
 require_once 'header.php'; ?>
 
+
 <div class="container"><br>
+<div class="col s3">
+	<div class="right">
+		
+<form action="" method="get">
+	<input type="search" name="cari" placeholder="Silahkan Cari Disini .. ">
+</form>
+	</div>
+</div>
+<br><br><br>
+
 	<h3 class="center">Berita</h3>
 	<div class="row"><br>
-			<?php while($row = mysqli_fetch_assoc($berita)): ?>
 	<div class="row materis-Card animated bounceIn">
+			<?php while($row = mysqli_fetch_assoc($berita)): ?>
 		<div class="col s12 m4">
 			<div class="card ">
 				<div class="card-img waves-effect waves-light">
