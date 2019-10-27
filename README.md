@@ -1,3 +1,3 @@
-# Web-kesehatan-
-Tugas Uas Pembuatan Web dengan php murni , 
-dengan  Matrealize, JQuery , tinymce
+# Website Kesehatan
+Tugas UAS Pembuatan Web dengan PHP murni,
+dengan Matrealize, JQuery, tinymce
