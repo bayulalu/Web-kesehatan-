@@ -1,3 +1,2 @@
 # Website Kesehatan
-Tugas UAS Pembuatan Web dengan PHP murni,
-dengan Matrealize, JQuery, tinymce
+Tugas UAS Pembuatan Web dengan PHP, Materialize, jQuery, TinyMCE
